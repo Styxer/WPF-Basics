@@ -29,7 +29,7 @@ namespace WPF_Basics
         {
             InitializeComponent();
 
-            DataContext = new Class1();
+            
         }
         #endregion
 
