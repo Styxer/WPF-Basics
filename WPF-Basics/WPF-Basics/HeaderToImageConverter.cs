@@ -23,7 +23,8 @@ namespace WPF_Basics
         {
             var path = value?.ToString();
 
-            var name = String.IsNullOrEmpty(Path.GetFileNameWithoutExtension(path)) ? Path.GetDirectoryName(path) : Path.GetFileNameWithoutExtension(path);
+
+            var name = DirectoryStructure.GetFileFolderName(path);//String.IsNullOrEmpty(Path.GetFileNameWithoutExtension(path)) ? Path.GetDirectoryName(path) : Path.GetFileNameWithoutExtension(path);
 
             var image = String.Empty;
 
