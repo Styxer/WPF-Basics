@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace WPF_Basics
 {
@@ -22,23 +23,25 @@ namespace WPF_Basics
         /// <param name="type">The type of item</param>
         public DirectoryItemViewModel(string fullPath, DirectoryItemType type)
         {
-            // Create commands
-           // ExpandCommand = new RelayCommand(Expand);
-
-            // Set path and type
-            this.FullPath = fullPath;
-            this.Type = type;
-
-            // Setup the children as needed
-            this.ClearChildren();
+           
+            ExpandCommand = new RelayCommand(Expand);
+           
+            FullPath = fullPath;
+            Type = type;
+           
+            ClearChildren();
         }
 
         #endregion
 
         #region Public Properties
+       
+
         public string FullPath { get; set; }
 
         public string Name { get { return Type == DirectoryItemType.Drive ? FullPath : DirectoryStructure.GetFileFolderName(FullPath); } }
+
+        public string ImageName => Type == DirectoryItemType.Drive ? "drive" : (Type == DirectoryItemType.File ? "file" : (IsExpanded ? "folder-open" : "folder-closed"));
 
         public DirectoryItemType Type { get; set; }
 
@@ -66,6 +69,12 @@ namespace WPF_Basics
 
         #endregion
 
+        #region Public Commands
+
+        public ICommand ExpandCommand { get; set; }
+
+        #endregion
+
         #region helper Functions
         private void ClearChildren()
         {
@@ -77,7 +86,9 @@ namespace WPF_Basics
                 Children.Add(null);
         }
 
-
+        /// <summary>
+        /// expands this dir and finds all children
+        /// </summary>
         private void Expand()
         {
             // We cannot expand a file

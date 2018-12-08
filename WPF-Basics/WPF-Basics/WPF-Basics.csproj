@@ -68,7 +68,9 @@
     <Compile Include="Directory\Data\DirectoryItemType.cs" />
     <Compile Include="Directory\DirectoryStructure.cs" />
     <Compile Include="Directory\ViewModels\Base\BaseViewModel.cs" />
+    <Compile Include="Directory\ViewModels\Base\RelayCommand.cs" />
     <Compile Include="Directory\ViewModels\DirectoryItemViewModel.cs" />
+    <Compile Include="Directory\ViewModels\DirectoryStructureViewModel.cs" />
     <Compile Include="HeaderToImageConverter.cs" />
     <Compile Include="TreeView.xaml.cs">
       <DependentUpon>TreeView.xaml</DependentUpon>
